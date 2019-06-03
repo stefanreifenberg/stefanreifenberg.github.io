@@ -14,14 +14,14 @@
   </url>
   
   <url>
-    <loc>https://stefanreifenberg.github.io/post/hello/</loc>
-    <lastmod>2019-06-02T19:00:01+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://stefanreifenberg.github.io/post/</loc>
     <lastmod>2019-06-02T19:00:01+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://stefanreifenberg.github.io/post/hello/</loc>
+    <lastmod>2019-06-02T19:00:01+02:00</lastmod>
   </url>
   
   <url>
