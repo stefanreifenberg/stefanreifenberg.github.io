@@ -59,6 +59,35 @@
 	.colorh1 {
 		color: #99b9f0;
 	}
+
+    #legend {
+		display: flex;
+   		flex-direction: row;
+		margin: 0 auto;
+		font-size: 25px;
+		padding: 10px;
+		background-color: #fff;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+		line-height: 18px;
+		margin-bottom: 5px;
+		z-index: 10;
+	}
+
+	.legend-key {
+		display: inline-block;
+		border-radius: 20%;
+		width: 25px;
+		height: 25px;
+		margin-right: 5px;
+		margin-bottom: 10px;
+	}
+
+    @media (max-width: 768px) {
+		.map-overlay {
+			display: none;
+		}
+	}
+
     </style>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css" type="text/css">
@@ -73,6 +102,8 @@
         <h3>
             Noise mapping of the road network for the urban area of ​​Freiburg im Breisgau from 2012 at day and night.
         </h3>
+        <div id='legend'></div>
+        <h3 style="text-align: center;">Decibel</h3>
 		<p>
 			<a href="https://geodaten.freiburg.de/geonetwork/srv/ger/catalog.search#/metadata/430aac82-d074-4714-8a17-b073fe9f5958">Data: Freiburg geodata catalog</a>
 		</p>
@@ -84,6 +115,9 @@
 </div>
 
 <script>
+    const colors = ['#110c32','#331067','#59157e','#7d2381','#a3307e','#c93d72','#ea5562','#fa7c5d','#fea872','#fed395']
+	const layers = ['35','40','45','50','55','60','65','70','75','80'];
+
 	mapboxgl.accessToken = 'pk.eyJ1IjoieWFyZHkiLCJhIjoiY2t3MXRvYjY3MW9yYTJ1cWlzOWtscmQ1YiJ9.Aq1lvQzY3gXUDwA0HlsvZg';
     const beforeMap = new mapboxgl.Map({
         container: 'before',
@@ -199,6 +233,25 @@
     
     const map = new mapboxgl.Compare(beforeMap, afterMap, container, {
     });
+
+    // create legend
+	const legend = document.getElementById('legend');
+
+    layers.forEach((layer, i) => {
+        const color = colors[i];
+        console.log(color);
+        const item = document.createElement('div');
+        const key = document.createElement('span');
+        key.className = 'legend-key';
+        key.style.backgroundColor = color;
+
+        const value = document.createElement('span');
+        value.innerHTML = `${layer}`;
+        item.appendChild(key);
+        item.appendChild(value);
+        legend.appendChild(item);
+    });
+
 </script>
  
 </body>
