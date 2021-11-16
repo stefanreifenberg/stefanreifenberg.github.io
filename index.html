@@ -31,6 +31,34 @@
             bottom: 0;
             width: 100%;
         }
+
+	.map-overlay {
+		font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+		position: absolute;
+		width: 450px;
+		height: fit-content;
+		top: 0;
+		left: 0;
+		padding: 10px;
+	}
+
+	.map-overlay .map-overlay-inner {
+		background-color: #fff;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+		border-radius: 3px;
+		padding: 10px;
+		margin-bottom: 10px;
+        text-align: center;
+	}
+ 
+	.map-overlay h1 {
+		line-height: 24px;
+		display: inline-block;
+		margin: 0 0 10px;
+	}
+	.colorh1 {
+		color: #99b9f0;
+	}
     </style>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css" type="text/css">
@@ -38,12 +66,35 @@
     <div id="before" class="map"></div>
     <div id="after" class="map"></div>
 </div>
+
+
+<div class="map-overlay">
+	<div class="map-overlay-inner">
+        <h1>Freiburger</h1><h1 class="colorh1">&nbsp;Bächle</h1>
+        <p>
+            “If visiting Freiburg for the first time, you will be pleasantly surprised by the many open streams flowing through the streets with crystal clear water.” (Description of the city from 1896)
+        </p>
+        <div id="picture">
+            <a title="Rob Faulkner from Leeds, United Kingdom, CC BY 2.0 &lt;https://creativecommons.org/licenses/by/2.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:B%C3%A4chle_(6221487826).jpg"><img width="256" alt="Bächle (6221487826)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/B%C3%A4chle_%286221487826%29.jpg/256px-B%C3%A4chle_%286221487826%29.jpg"></a>
+            
+        </div>
+        <a href="https://commons.wikimedia.org/wiki/File:B%C3%A4chle_(6221487826).jpg">Rob Faulkner from Leeds, United Kingdom</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons
+		<p>
+			<a href="https://geodaten.freiburg.de/geonetwork/srv/ger/catalog.search#/metadata/430aac82-d074-4714-8a17-b073fe9f5958">Data: Freiburg geodata catalog</a>
+		</p>
+		<p>
+			Author: kaldera // Stefan <br>
+			<a href="https://github.com/stefanreifenberg/30daymap">Code can be found here</a>
+		</p>
+	</div>
+</div>
+
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoieWFyZHkiLCJhIjoiY2t3MXRvYjY3MW9yYTJ1cWlzOWtscmQ1YiJ9.Aq1lvQzY3gXUDwA0HlsvZg';
     const beforeMap = new mapboxgl.Map({
         container: 'before',
         style: 'mapbox://styles/mapbox/light-v10',
-        center: [7.85, 47.995],
+        center: [7.80, 47.995],
         zoom: 12
     });
 
@@ -99,8 +150,8 @@
     const afterMap = new mapboxgl.Map({
         container: 'after',
         style: 'mapbox://styles/mapbox/dark-v10',
-        center: [7.85, 47.995],
-        zoom: 14
+        center: [7.80, 47.995],
+        zoom: 12
     });
 
     afterMap.on('load', () => {
